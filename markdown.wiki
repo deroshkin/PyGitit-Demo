@@ -1,0 +1,120 @@
+[TOC]
+
+# About Markdown
+
+This is a simple reference to the markdown features available in PyGitit.
+
+PyGitit uses the [Python-Markdown](https://python-markdown.github.io/) engine for rendering markdown, which with a few minor differences listed on their site implements John Grubers's [markdown](https://daringfireball.net/projects/markdown/). Additionally, python-markdown allows [extensions](https://python-markdown.github.io/extensions/) many of which are built-in. The `WikiLinks` extension is always enabled in PyGitit, and two others: `Table of Contents` and `Tables` are enabled by default, but this can be over-written by the settings file.
+
+# Commonly Used Features
+
+Many of these features can be selected from the features of the markdown editor used in the default edit template.
+
+## Headers
+
+There are two ways of doing headers:
+<pre>
+# This is H1
+## This is H2
+### This is H3
+
+This is H1
+=====
+
+This is H2
+-----
+</pre>
+The first method may optionally be closed: e.g. `## This is H2 #`. Any number of closing `#` may be used. For the second method, you must use at least 2 `=` or `-` respectively.
+
+## Bold/Italics
+
+`**this is bold**` **this is bold** `__so is this__` __so is this__
+
+`*this is italicized*` *this is italicized* `_so is this` _so is this_
+
+You can also combine them, using any of the two notations for each: `***this is both***` ***this is both*** `*__so is this__*` *__so is this__* `___and this___` ___and this___ `**_and even this_**` **_and even this_**
+
+## Links
+
+You can use `[outside links](http://www.google.com)` to make [outside links](http://www.google.com).
+
+Or you can use `[[Home]]` to link to other wiki pages, such as [[Home]].
+
+## Lists
+
+Markdown supports both bullet point and numbered lists:
+<pre>
+* This is a bullet point list
+- Second item
+- You can use either leading symbol interchangably
+
+2. This is a numbered list
+1. The numbers you put in front don't actually matter
+</pre>
+
+* This is a bullet point list
+- Second item
+- You can use either leading symbol interchangably
+
+
+2. This is a numbered list
+1. The numbers you put in front don't actually matter
+
+We can also nest lists of either type:
+* Starting with a bullet point list
+	1. Which has a numbered sub-list
+		2. Which has its own numbered sublist
+* And Just another top level item
+	* With a bullet point subitem
+
+## Escaping markdown
+
+If you want to write a symbol that has special meaning in markdown, you can escape it using a backslash. e.g. `\*` gets us \*
+
+## Code blocks
+
+Code blocks are achieved by enclosing it in `` ` `` for in-line code and in `<pre></pre>` for blocks of code. Optionally, you can add the `fenced_code` extension to enable ` ``` ` and `~~~` code blocks.
+
+## Images
+
+You can insert images using `![PyGitit Logo](/static/img/PyGitit.png "logo")`
+
+![PyGitit Logo](/static/img/PyGitit.png "logo")
+
+The text in the brackets is the text displayed if the image fails to load, while the optional text in the quotes is the mouse-over text.
+
+---
+
+# Other Features
+
+## Horizontal rule
+
+Horizontal rule is obtain by putting three or more asterisks `*` dashes `-` or underscores `_` in a line by themselves. You may optionally space them out. The one caution is that if you use dashes without spacing them out, you must add an empty line above them to avoid markdown interpreting them as an H2 indicator.
+*   *   *   *   *
+
+## Inline HTML
+
+`<b>You can use normal html tags as well</b>` <b>You can use normal html tags as well</b>.
+
+The one thing to be careful with is that any markdown enclosed in block-level html tags will be ignored:
+`<table> <tr> <td>*This is not italicized* </td> </tr></table>`
+<table> <tr> <td>*This is not italicized* </td> </tr></table>
+
+## Tables
+
+If you haven't overwritten the default configurations, python-markdown will also process tables given in the following format:
+<pre>
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+</pre>
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+## Table of Contents
+
+With the default configuration, it is enough to place `[TOC]` at the top of the page, and python-markdown will generate a table of contents.
