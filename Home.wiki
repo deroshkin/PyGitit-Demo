@@ -33,7 +33,7 @@ Alternatively, you may run `pygitit -s [config_file]`, where the config file mus
 
 ## Features
 
-* Standard markdown formatting for wiki pages
+* Standard [[markdown]] formatting for wiki pages.
 * History of page revisions
 * Comparison of page revisions
 * Ability to view old versions of a page and to revert to them
